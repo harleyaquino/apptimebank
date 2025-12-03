@@ -1,26 +1,125 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Colores del tema oscuro por defecto */
+  --background: #0a0e27;
+  --foreground: #ffffff;
+  
+  /* Colores personalizados del proyecto */
+  --color-primary-navy: #0a0e27;
+  --color-primary-purple: #1a1b3d;
+  --color-primary-blue: #4169e1;
+  
+  --color-accent-orange: #ff8c42;
+  --color-accent-purple: #8b5cf6;
+  --color-accent-green: #10b981;
+  --color-accent-cyan: #06b6d4;
 }
 
 @theme inline {
+  /* Colores base */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  
+  /* Colores primarios */
+  --color-primary-navy: #0a0e27;
+  --color-primary-purple: #1a1b3d;
+  --color-primary-blue: #4169e1;
+  
+  /* Colores de acento */
+  --color-accent-orange: #ff8c42;
+  --color-accent-purple: #8b5cf6;
+  --color-accent-green: #10b981;
+  --color-accent-cyan: #06b6d4;
+  
+  /* Fuentes */
+  --font-sans: ui-sans-serif, system-ui, sans-serif;
+  --font-mono: ui-monospace, monospace;
 }
 
 body {
-  background: var(--background);
+  background: var(--color-primary-navy);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Clases utilitarias personalizadas */
+@layer utilities {
+  .btn-primary {
+    background-color: var(--color-accent-orange);
+    color: white;
+    font-weight: 600;
+    padding: 0.75rem 2rem;
+    border-radius: 0.75rem;
+    transition: all 0.3s ease;
+  }
+  
+  .btn-primary:hover {
+    background-color: #f97316;
+  }
+  
+  .btn-secondary {
+    background-color: transparent;
+    border: 2px solid white;
+    color: white;
+    font-weight: 600;
+    padding: 0.75rem 2rem;
+    border-radius: 0.75rem;
+    transition: all 0.3s ease;
+  }
+  
+  .btn-secondary:hover {
+    background-color: white;
+    color: var(--color-primary-navy);
+  }
+
+  .card-task {
+    background-color: var(--color-primary-blue);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    transition: transform 0.3s ease;
+  }
+  
+  .card-task:hover {
+    transform: scale(1.05);
+  }
+
+  .input-field {
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 0.75rem;
+    padding: 0.75rem 1rem;
+    color: white;
+    transition: all 0.3s ease;
+  }
+  
+  .input-field::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+  }
+  
+  .input-field:focus {
+    outline: none;
+    border-color: var(--color-accent-orange);
+    box-shadow: 0 0 0 2px rgba(255, 140, 66, 0.5);
+  }
+}
+
+/* Animaciones personalizadas */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.5s ease-out;
 }
