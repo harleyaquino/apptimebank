@@ -1,9 +1,9 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  output: 'export', // ⬅️ ESTO HACE EL BUILD ESTÁTICO
-  images: {
-    unoptimized: true, // ⬅️ Necesario para export
-  },
+import type { NextConfig } from "next";
+
+const nextConfig: NextConfig = {
+  output: "export",              // ⬅️ Fuerza la exportación estática
+  distDir: "out",                // ⬅️ Carpeta donde se genera el build estático
+  trailingSlash: true,           // ⬅️ Opcional, evita errores con rutas en Amplify
 };
 
-module.exports = nextConfig;
+export default nextConfig;
